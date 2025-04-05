@@ -1,0 +1,39 @@
+{% extends "app/base.html" %} {% load static %}{% load humanize %}
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="" />
+  </head>
+  <body>
+    {% block category %}
+
+    <br />
+    <div class="row row__thumbnail">
+      {% for product in products %}
+      <div class="col-lg-3">
+        <img class="thumbnail" src="{{product.ImageURL}}" />
+        <div class="box-element product">
+          <h6><strong>{{product.name}}</strong></h6>
+          <hr />
+          <button
+            data-product="{{product.id}}"
+            data-action="add"
+            class="btn btn-outline-info add-btn update-cart"
+          >
+            Thêm
+          </button>
+          <a class="btn btn-outline-info" href="#">Xem</a>
+          <h4 style="display: inline-block; float: right; font-size: 30px">
+            <strong>{{product.price | floatformat:0|intcomma }} đ</strong>
+          </h4>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% endblock category %}
+  </body>
+</html>
