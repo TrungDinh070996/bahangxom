@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-rh@x0p_d(!+70$daujuek5e6*oqv0-#=e42d-wpom(0id5+)bn
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['flowercurshuit.onrender.com']
+ALLOWED_HOSTS = ['flowercursh.onrender.com']
 
 
 # Application definition
