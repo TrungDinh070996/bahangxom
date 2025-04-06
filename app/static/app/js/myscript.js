@@ -1,3 +1,7 @@
+$('.add-btn').click(function(){   
+    showToast();  
+  });
+
 $('#slider1, #slider2, #slider3').owlCarousel({
     loop: true,
     margin: 20,

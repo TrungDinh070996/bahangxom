@@ -25,17 +25,17 @@
   <div class="carousel-inner">
     <div class="carousel-item active" data-bs-interval="10000">
       <img src="{% static "app/images/banner1.jpg" %}" class="d-block mx-auto"
-      alt="banner1" height="300" width='1200'>
+      alt="banner1" height="300" width='900'>
       
     </div>
     <div class="carousel-item" data-bs-interval="2000">
       <img src="{% static "app/images/banner2.JPG" %}" class="d-block mx-auto"
-      alt="banner2" height="300" width='1200'>
+      alt="banner2" height="300" width='900'>
       
     </div>
     <div class="carousel-item" data-bs-interval="2000">
       <img src="{% static "app/images/banner3.JPG" %}" class="d-block mx-auto"
-      alt="banner2" height="300" width='1200'>
+      alt="banner3" height="300" width='900'>
       
     </div>
   </div>
@@ -68,16 +68,19 @@
     </div>
     
     <div class="box-element box-element__check  product">
-      <h6><strong>{{product.name}}</strong></h6>
+      <h6 style="font-size: 12px; color: #dc3545; margin-bottom: -10px;">{{product.name}}</h6>
       <hr />
-      <button data-product={{product.id}} data-action='add' class="btn btn-outline-dark add-btn update-cart">Thêm</button>
-      <a class="btn btn-outline-dark" href="{% url "detail" %}?id={{product.id}} ">Xem</a>
-      <h4 style="display: inline-block; float: right; font-size: 20px; margin-top:10px; color: #dc3545;">
-        <strong>{{product.price | floatformat:0|intcomma}} đ</strong>
+      
+      <button data-product={{product.id}} data-action='add' class="btn btn-outline-dark add-btn update-cart" style="font-size: 8px; margin-top: -20px;">Thêm</button>
+      <a class="btn btn-outline-dark" href="{% url "detail" %}?id={{product.id}} " style="font-size: 8px; margin-top: -20px;">Xem</a>
+      <h4 style="display: inline-block; float: right; font-size: 15px; color:#dc3545; margin-top: -5px;">
+        {{product.price | floatformat:0|intcomma}}đ
       </h4>
     </div>
   </div>
+  
   {% endfor %}
 </div>
+
 
 {% endblock main-content %}

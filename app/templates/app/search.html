@@ -19,13 +19,14 @@
           <a href="{% url "detail" %}?id={{product.id}}"><img class="thumbnail" src="{{product.ImageURL}}" /></a>
         </div>
         
-        <div class="box-element product">
-          <h6><strong>{{product.name}}</strong></h6>
+        <div class="box-element box-element__check  product">
+          <h6 style="font-size: 12px; color: #dc3545; margin-bottom: -10px;">{{product.name}}</h6>
           <hr />
-          <button data-product={{product.id}} data-action='add' class="btn btn-outline-dark add-btn update-cart">Thêm</button>
-          <a class="btn btn-outline-dark" href="{% url "detail" %}?id={{product.id}} ">Xem</a>
-          <h4 style="display: inline-block; float: right; font-size: 20px; margin-top:10px; color: #dc3545;">
-            <strong>{{product.price | floatformat:0|intcomma}} đ</strong>
+          
+          <button data-product={{product.id}} data-action='add' class="btn btn-outline-dark add-btn update-cart" style="font-size: 8px; margin-top: -20px;">Thêm</button>
+          <a class="btn btn-outline-dark" href="{% url "detail" %}?id={{product.id}} " style="font-size: 8px; margin-top: -20px;">Xem</a>
+          <h4 style="display: inline-block; float: right; font-size: 15px; color:#dc3545; margin-top: -5px;">
+            {{product.price | floatformat:0|intcomma}}đ
           </h4>
         </div>
       </div>

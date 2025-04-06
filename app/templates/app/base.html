@@ -60,14 +60,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
   <body >
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" style="font-size: 12px;">
       <div class="container-fluid">
         <a class="navbar-brand" href="">
           <img
             src=" {% static 'app/images/Logo.png' %} "
             alt="Logo"
-            width="150"
-            height="70"
+            width="100"
+            height="50"
           />
         </a>
 
@@ -101,7 +101,7 @@
               >
                 Sản phẩm
               </a>
-              <ul class="dropdown-menu">
+              <ul class="dropdown-menu" style="font-size: 12px;">
                 {% for cat in categories %}
                 <li><a class="dropdown-item" href="{% url "category" %}?category={{cat.slug}} ">{{cat.name}}</a></li>
                 {% endfor %}
@@ -111,7 +111,7 @@
             </li>
             
           </ul>
-          <form class="d-flex" role="search" method="POST" action="{% url 'search' %}">
+          <form class="d-flex" role="search" method="POST" action="{% url 'search' %}" style="height:30px; margin: 0 auto; justify-content: center">
             {%csrf_token%}
             <input
               class="form-control me-2"
@@ -120,7 +120,7 @@
               aria-label="Search"
               name="searched"
             />
-            <button class="btn btn-warning" type="submit">Tìm</button>
+            <button class="btn btn-warning text-white" style="font-size:12px;" type="submit">Tìm</button>
           </form>
         </div>
 
@@ -150,11 +150,22 @@
     {% block search %}{% endblock search %}
     {% block category %}{% endblock category %}
     {% block thank-you %}{% endblock thank-you %}
+
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1055">
+      <div id="toast-add-success" class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+          <div class="toast-body">
+            ✅ Đã thêm vào giỏ hàng!
+          </div>
+          <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+      </div>
+    </div>
     <br />
     <br />
     <br />
     <footer
-      class="container--fluid text-center bg-success text-white fixed-bottom p-2 mt-50"
+      class="container--fluid text-center bg-danger text-white fixed-bottom p-2 mt-50"
     >
       
       copyright 2025, All rights reserved
