@@ -1,4 +1,5 @@
-{% extends 'app/base.html' %} {% load static %} {% block content-checkout %}
+{% extends 'app/base.html' %} {% load static %} {% block content-checkout %}{% load humanize %}
+
 <div class="row" style="width: 100%">
   <div class="col-lg-6">
     <div class="box-element" id="form-wrapper">
@@ -51,7 +52,7 @@
               class="form-control"
               type="text"
               name="adrress_receiver"
-              placeholder="Số điện thoại người nhận hàng.."
+              placeholder="Số điện thoại người nhận.."
             />
           </div>
           <div class="form-field">
@@ -75,9 +76,9 @@
         <hr />
         <input
           id="form-button"
-          class="btn btn-outline-info btn-block"
+          class="btn btn-danger btn-block"
           type="submit"
-          value="Continue"
+          value="Xác nhận"
         />
       </form>
     </div>
@@ -87,7 +88,7 @@
 
   <div class="col-lg-6">
     <div class="box-element">
-      <a class="btn btn-outline-info" href="{% url 'cart' %}"
+      <a class="btn btn-danger" href="{% url 'cart' %}"
         >&#x2190; Trở về giỏ hàng</a
       >
       <hr />
@@ -100,87 +101,14 @@
           <img class="row-image" src="{{item.product.ImageURL}}" />
         </div>
         <div style="flex: 2"><p>{{item.product.name}}</p></div>
-        <div style="flex: 1"><p>{{item.product.price}}</p></div>
+        <div style="flex: 1"><p>{{item.product.price| floatformat:0 |intcomma}}đ</p></div>
         <div style="flex: 1"><p>{{item.quantity}}</p></div>
       </div>
       {% endfor %}
       <h5>Items: {{order.get_cart_items}}</h5>
-      <h5>Total: {{order.get_cart_total | floatformat:0}} đ</h5>
+      <h5>Total: {{order.get_cart_total | floatformat:0 |intcomma}}đ</h5>
     </div>
   </div>
 </div>
-{% comment %} <script>
-  document.getElementById("form").addEventListener("submit", function (event) {
-    event.preventDefault(); // Ngừng hành động mặc định của form (không reload trang)
-
-    // Lấy các giá trị từ form
-    var name = document.querySelector('input[name="name"]').value;
-    var email = document.querySelector('input[name="email"]').value;
-    var phone = document.querySelector('input[name="phone"]').value;
-    var name_receiver = document.querySelector(
-      'input[name="name_receiver"]'
-    ).value;
-    var adrress_receiver = document.querySelector(
-      'input[name="adrress_receiver"]'
-    ).value;
-    var phone_receiver = document.querySelector(
-      'input[name="phone_receiver"]'
-    ).value;
-    var note_receiver = document.querySelector(
-      'input[name="note_receiver"]'
-    ).value;
-
-    function getCookie(name) {
-      let cookieValue = null;
-      if (document.cookie && document.cookie !== '') {
-          let cookies = document.cookie.split(';');
-          for (let i = 0; i < cookies.length; i++) {
-              let cookie = cookies[i].trim();
-              // Tìm đúng token
-              if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                  cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                  break;
-              }
-          }
-      }
-      return cookieValue;
-  }
-
-    // Gửi yêu cầu AJAX đến backend để lưu thông tin
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", "/checkout/", true);
-    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
-
-    // Gửi dữ liệu form
-    xhr.send(
-      "name=" +
-        name +
-        "&email=" +
-        email +
-        "&phone=" +
-        phone +
-        "&name_receiver=" +
-        name_receiver +
-        "&adrress_receiver=" +
-        adrress_receiver +
-        "&phone_receiver=" +
-        phone_receiver +
-        "&note_receiver=" +
-        note_receiver
-    );
-
-    // Xử lý phản hồi từ server
-    xhr.onload = function () {
-      if (xhr.status === 200) {
-        var response = JSON.parse(xhr.responseText);
-        alert(response.message); // Hiển thị thông báo đăng ký thành công
-        window.location.href = "/"; // Chuyển hướng về trang chủ
-      } else {
-        alert("Có lỗi xảy ra, vui lòng thử lại.");
-      }
-    };
-  });
-</script> {% endcomment %}
 
 {% endblock content-checkout %}

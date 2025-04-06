@@ -1,4 +1,4 @@
-{% extends "app/base.html" %} {% load static %}
+{% extends "app/base.html" %} {% load static %}{% load humanize %} 
 <html>
   <head>
     <meta charset="utf-8" />
@@ -11,18 +11,21 @@
   <body>
     {% block search %}
     
-    <h3>Kết quả tìm kiếm cho {{searched}}</h3> <br/>
+    <h3>Kết quả tìm kiếm cho {{searched}}:</h3> <br/>
     <div class="row row__thumbnail">
       {% for product in keys %}
-      <div class="col-lg-3">
-        <img class="thumbnail" src="{{product.ImageURL}}" />
+      <div class="col-lg-3 thumbnail-content">
+        <div style="width:100%; justify-content: center; margin-bottom:10px;" >
+          <a href="{% url "detail" %}?id={{product.id}}"><img class="thumbnail" src="{{product.ImageURL}}" /></a>
+        </div>
+        
         <div class="box-element product">
           <h6><strong>{{product.name}}</strong></h6>
           <hr />
-          <button data-product={{product.id}} data-action='add' class="btn btn-outline-info add-btn update-cart">Thêm</button>
-          <a class="btn btn-outline-info" href="#">Xem</a>
-          <h4 style="display: inline-block; float: right; font-size: 30px">
-            <strong>{{product.price | floatformat:0}} đ</strong>
+          <button data-product={{product.id}} data-action='add' class="btn btn-outline-dark add-btn update-cart">Thêm</button>
+          <a class="btn btn-outline-dark" href="{% url "detail" %}?id={{product.id}} ">Xem</a>
+          <h4 style="display: inline-block; float: right; font-size: 20px; margin-top:10px; color: #dc3545;">
+            <strong>{{product.price | floatformat:0|intcomma}} đ</strong>
           </h4>
         </div>
       </div>

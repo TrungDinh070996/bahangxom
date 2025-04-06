@@ -98,11 +98,17 @@ def detail(request):
     return render(request, 'app/detail.html',context)
 
 def category(request):
+    if request.user.is_authenticated:
+        user_not_login = "hidden"
+        user_login = "show"
+    else:
+        user_not_login = "show"
+        user_login = "hidden"
     categories = Category.objects.filter(is_sub =False) 
     active_category = request.GET.get('category', '')
     if active_category:
         products = Product.objects.filter(category__slug = active_category)
-    context = {'categories': categories, 'products': products, 'active_category': active_category}
+    context = {'categories': categories, 'products': products, 'active_category': active_category, 'user_not_login': user_not_login, 'user_login': user_login}
     return render(request, 'app/category.html', context)
 
 def search(request):

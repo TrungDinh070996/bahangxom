@@ -15,7 +15,7 @@
     href={%static 'app/css/all.min.css'%} rel="stylesheet" /> <link
     href={%static 'app/css/owl.carousel.min.css'%} rel="stylesheet" /> <link
     href={%static 'app/css/main.css' %} rel="stylesheet" />
-    <title>HAPPY FLOWER T&A</title>
+    <title>FLOWER CRUSH</title>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
       integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
@@ -60,7 +60,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
   <body >
-    <span class="d-block p-2 bg-primary text-white">d-block</span>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
         <a class="navbar-brand" href="">
@@ -110,12 +109,7 @@
                 
               </ul>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Giới thiệu</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Liên hệ</a>
-            </li>
+            
           </ul>
           <form class="d-flex" role="search" method="POST" action="{% url 'search' %}">
             {%csrf_token%}
@@ -126,13 +120,13 @@
               aria-label="Search"
               name="searched"
             />
-            <button class="btn btn-outline-info" type="submit">Tìm</button>
+            <button class="btn btn-warning" type="submit">Tìm</button>
           </form>
         </div>
 
         <div class="form-inline my-2 my-lg-0" style="visibility: {{user_login}}; margin-left: 35px;">
-          <span>Hello! {{request.user}}</span>
-          <span style="margin-left: 25px; "><a style="text-decoration: none; color:#333" href="{% url 'logout' %}">Đăng xuất</a></span>
+          <span style="color:white; font-weight: bold">Hello! {{request.user}}</span>
+          <span style="margin-left: 25px; "><a style="text-decoration: none; color:white; font-weight: bold" href="{% url 'logout' %}">Đăng xuất</a></span>
         </div>   
         <div class="form-inline my-2 my-lg-0" style="visibility: {{user_not_login}};margin-right: 15px;">       
           <a class="nav-link" href="{% url 'login' %}">Đăng nhập</a>          
@@ -160,9 +154,10 @@
     <br />
     <br />
     <footer
-      class="container--fluid text-center bg-info-subtle fixed-bottom p-2 mt-5"
+      class="container--fluid text-center bg-success text-white fixed-bottom p-2 mt-50"
     >
-      copyright 2025
+      
+      copyright 2025, All rights reserved
     </footer>
 
     <script src="{%static 'app/js/cart.js'%}"></script>

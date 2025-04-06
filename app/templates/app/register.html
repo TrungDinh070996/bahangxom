@@ -19,14 +19,14 @@
               style="border-radius: 15px"
             >
               <div class="card-body p-4 p-md-5">
-                <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Registration Form</h3>
+                <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Thông tin đăng ký</h3>
                 <form method="POST" action="">
                   {%csrf_token%}
                   <div class="row">
                     <div class="col-md-6 mb-4">
                       <div data-mdb-input-init class="form-outline">
                         <label class="form-label" for="firstName"
-                          >First Name</label
+                          >Tên</label
                         >
                         <br/>
                         {{form.first_name}}
@@ -35,7 +35,7 @@
                     <div class="col-md-6 mb-4">
                       <div data-mdb-input-init class="form-outline">
                         <label class="form-label" for="lastName"
-                          >Last Name</label
+                          >Họ và tên lót</label
                         >
                         <br/>
                         {{form.last_name}}
@@ -55,7 +55,7 @@
                     <div class="col-md-6 mb-4 pb-2">
                       <div data-mdb-input-init class="form-outline">
                         <label class="form-label" for="userName"
-                          >User Name</label
+                          >Tên đăng nhập</label
                         >
                       </div>
                       {{form.username}}
@@ -66,7 +66,7 @@
                     <div class="col-md-6 mb-4 pb-2">
                       <div data-mdb-input-init class="form-outline">
                         <label class="form-label" for="passWord1"
-                          >Password</label
+                          >Mật khẩu</label
                         >
                       </div>
                       {{form.password1}}
@@ -74,7 +74,7 @@
                     <div class="col-md-6 mb-4 pb-2">
                       <div data-mdb-input-init class="form-outline">
                         <label class="form-label" for="passWord2"
-                          >Retype Password</label
+                          >Nhập lại mật khẩu</label
                         >
                       </div>
                       {{form.password2}}
@@ -86,11 +86,11 @@
                       data-mdb-ripple-init
                       class="btn btn-primary btn-lg"
                       type="submit"
-                      value="Register"
+                      value="Đăng ký"
                     />
                   </div>
                   <p class="text-center h6 fw-bold mb-5 mx-1 mx-md-4 mt-4">
-                    You had an account!? <a href={% url 'login' %}>Login</a>
+                    Bạn đã có mật khẩu rồi? <a href={% url 'login' %}>Đăng nhập ngay!</a>
                   </p>
                 </form>
               </div>
