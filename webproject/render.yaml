@@ -1,12 +1,3 @@
-services:
-  - type: web
-    name: django-app
-    env: python
-    plan: free
-    buildCommand: 
-      pip install -r requirements.txt
-      python manage.py collectstatic --noinput
-    startCommand: gunicorn webproject.wsgi:application
-    envVars:
-      - key: DJANGO_SETTINGS_MODULE
-        value: webproject.settings
+buildCommand: |
+  pip install -r requirements.txt
+  python manage.py migrate
