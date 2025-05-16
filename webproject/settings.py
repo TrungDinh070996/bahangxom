@@ -84,7 +84,14 @@ WSGI_APPLICATION = 'webproject.wsgi.application'
 load_dotenv()  # Tải biến từ .env
 
 DATABASES = {
-    'default': dj_database_url.config(default='sqlite:///db.sqlite3')
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'bahangxom_db',
+        'USER': 'bahangxom',
+        'PASSWORD': 'kYchgDGtMey8kJcQKUChJ3VEHGXYaQBL',
+        'HOST': 'dpg-d0jaine3jp1c739n9ba0-a.singapore-postgres.render.com',  # <- lỗi nằm ở đây
+        'PORT': '5432',
+    }
 }
 
 
@@ -143,7 +150,4 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'flowercrushuit@gmail.com'
 EMAIL_HOST_PASSWORD = 'Trung@070996'  
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
-import dj_database_url
-DATABASES = {
-    'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))
-}
+
