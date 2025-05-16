@@ -1,14 +1,7 @@
 {% extends "app/base.html" %} {% load static %}{% load humanize %}
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title></title>
-    <meta name="description" content="" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="" />
-  </head>
-  <body>
+    
     {% block category %} {% for product in products %}
-    <div class="container mt-5 mb-5">
+    {% comment %} <div class="container mt-10 mb-5">
       <div class="row d-flex justify-content-center">
         <div class="col-md-10">
           <div class="card">
@@ -46,8 +39,50 @@
             </div>
           </div>
         </div>
+      </div> {% endcomment %}
+    {% comment %} </div> {% endcomment %}
+
+<div class="container mt-5 mb-5">
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-10">
+      <div class="card">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="images p-3">
+              <div class="text-center p-4">
+                <img id="main-image" src="{{ product.ImageURL }}" width="250" />
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="product p-4">
+              <h5 class="text-uppercase">{{ product.name }}</h5>
+
+              <div class="mt-4 mb-3">
+                <div class="price d-flex flex-row align-items-center">
+                  <span style="color: #d92d20; font-weight:bold;" class="act-price">{{ product.price | floatformat:0 | intcomma }}đ</span>
+                </div>
+              </div>
+
+              <p class="about">
+                {{ product.name }} mang đến vẻ đẹp rực rỡ và tươi mới, là sự kết hợp hoàn hảo giữa những đóa hoa đỏ thắm, trắng tinh khôi, tím lãng mạn. Được chọn lựa kỹ càng từ những bông hoa tươi nhất, bó hoa này không chỉ là món quà lý tưởng cho những dịp sinh nhật, kỷ niệm hay tỏ tình mà còn là biểu tượng của tình yêu, sự tinh khiết và may mắn.
+              </p>
+
+              {% comment %} <div class="cart mt-4 align-items-center">
+                <button data-product="{{ product.id }}" data-action="add" class="btn btn-outline-info add-btn update-cart">Thêm vào giỏ hàng</button>
+              </div> {% endcomment %}
+              <div class="cart mt-4 align-items-center">
+                <a class="detail-contact" href="https://www.facebook.com/thienphuc260696">Liên hệ ngay</a>
+              </div>
+
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    {% endfor %} {% endblock category %}
-  </body>
-</html>
+  </div>
+</div>
+{% endfor %}
+ {% endblock category %}
+  

@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-rh@x0p_d(!+70$daujuek5e6*oqv0-#=e42d-wpom(0id5+)bn
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['flowercursh.onrender.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['bahangxom.onrender.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -127,9 +127,9 @@ STATIC_URL = 'static/'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoFiel'
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static')
+    os.path.join(BASE_DIR, 'app/static')
 ]
 
 MEDIA_URL = '/images_url/'
@@ -143,3 +143,7 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'flowercrushuit@gmail.com'
 EMAIL_HOST_PASSWORD = 'Trung@070996'  
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+import dj_database_url
+DATABASES = {
+    'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))
+}

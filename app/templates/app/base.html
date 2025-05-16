@@ -11,6 +11,8 @@
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
     <link href={% static 'app/css/style.css' %} rel="stylesheet" /> <link
     href={%static 'app/css/all.min.css'%} rel="stylesheet" /> <link
     href={%static 'app/css/owl.carousel.min.css'%} rel="stylesheet" /> <link
@@ -32,6 +34,7 @@
       integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
       crossorigin="anonymous"
     ></script>
+    
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 
@@ -60,16 +63,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
   <body >
-    <nav class="navbar navbar-expand-lg bg-body-tertiary" style="font-size: 12px;">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="">
+
+    
+
+    <main>
+<nav class="navbar  navbar-expand-lg fixed-top  bg-body-tertiary navbar-header">
+      <div class="container-fluid ">
+        <a class="navbar-brand logo" href="{% url "home" %}">
           <img
-            src=" {% static 'app/images/Logo.png' %} "
+            src=" {% static 'app/images/logo1.png' %} "
             alt="Logo"
-            width="100"
-            height="50"
+            width="50px"
+            height="50px"
+          />
+          <img
+            class="logo-type"
+            src=" {% static 'app/images/logo2.png' %} "
+            alt="Logo"
+            width="100px"
           />
         </a>
+                     
+        
 
         <button
           class="navbar-toggler"
@@ -84,24 +99,23 @@
           <span class="navbar-toggler-icon"></span>
         </button>
 
+        
+
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{% url "home" %}"
-                >Trang chủ</a
-              >
-            </li>
+              
             <li class="nav-item dropdown">
               <a
-                class="nav-link dropdown-toggle"
+                class="nav-link dropdown-toggle product-btn"
                 href="#"
                 role="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                Sản phẩm
+                Danh mục sản phẩm
               </a>
-              <ul class="dropdown-menu" style="font-size: 12px;">
+              <ul class="dropdown-menu">
                 {% for cat in categories %}
                 <li><a class="dropdown-item" href="{% url "category" %}?category={{cat.slug}} ">{{cat.name}}</a></li>
                 {% endfor %}
@@ -111,20 +125,25 @@
             </li>
             
           </ul>
-          <form class="d-flex" role="search" method="POST" action="{% url 'search' %}" style="height:30px; margin: 0 auto; justify-content: center">
+          <form class="d-flex form-search" role="search" method="POST" action="{% url 'search' %}" > 
+            {% comment %} style="height:30px; margin: 0 auto; justify-content: center" {% endcomment %}
+            <button class="search-btn" type="submit">
+              <i class="fas fa-search search-icon"></i>
+            </button>  <!-- Kính lúp -->
+
             {%csrf_token%}
             <input
-              class="form-control me-2"
+              class="form-control me-2 search-input"
               type="search"
-              placeholder="Tìm kiếm"
+              placeholder="Tìm kiếm..."
               aria-label="Search"
               name="searched"
             />
-            <button class="btn btn-warning text-white" style="font-size:12px;" type="submit">Tìm</button>
+            {% comment %} <button class="btn btn-warning text-white" style="font-size:12px;" type="submit">Tìm</button> {% endcomment %}
           </form>
         </div>
 
-        <div class="form-inline my-2 my-lg-0" style="visibility: {{user_login}}; margin-left: 35px;">
+        {% comment %} <div class="form-inline my-2 my-lg-0" style="visibility: {{user_login}}; margin-left: 35px;">
           <span style="color:white; font-weight: bold">Hello! {{request.user}}</span>
           <span style="margin-left: 25px; "><a style="text-decoration: none; color:white; font-weight: bold" href="{% url 'logout' %}">Đăng xuất</a></span>
         </div>   
@@ -133,13 +152,15 @@
         </div>  
         <div class="form-inline my-2 my-lg-0" style="visibility: {{user_not_login}};">       
           <a class="nav-link" href="{% url 'register' %}">Đăng ký</a>    
-        </div>    
+        </div>     {% endcomment %}
+
       </div>
-        <div class="form-inline my-2 my-lg-0" >
+        {% comment %} <div class="form-inline my-2 my-lg-0" >
           <a href="{% url 'cart' %}"><img id="cart-icon" src="{% static "app/images/cart.png" %}"></a> 
         </div>
-      </div>
+      </div> {% endcomment %}
     </nav>
+    </main>
 
     {% block banner-slider %}{% endblock banner-slider %}
     {% block main-content%}{% endblock main-content %}
@@ -164,12 +185,11 @@
     <br />
     <br />
     <br />
-    <footer
-      class="container--fluid text-center bg-danger text-white fixed-bottom p-2 mt-50"
-    >
-      
-      copyright 2025, All rights reserved
-    </footer>
+    <footer class="text-center py-3 mb-0">
+  <p class="mb-1">Hotline: 093.xxx.xxxx</p>
+  <p class="mb-0">Địa chỉ: 275 Quang Trung, Gò Vấp, HCM</p>
+  <p>Đặt hàng ngay qua fanpage <a href="https://www.facebook.com/thienphuc260696" class="text-decoration-none">BAHANGXOM</a></p>
+</footer >
 
     <script src="{%static 'app/js/cart.js'%}"></script>
   </body>
